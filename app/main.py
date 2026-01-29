@@ -6,8 +6,8 @@ from app.service.search import (
 )
 
 app = FastAPI(
-    title="Teaching Tools API",
-    description="API for accessing curriculum sections for various subjects",
+    title="Semantic Scholar LLM Tool Server",
+    description="Tool server for accessing data from Semantic Scholar for LLMs",
     version="0.1.0",
     openapi_url="/openapi.json",
     docs_url="/docs",
