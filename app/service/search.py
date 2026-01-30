@@ -1,16 +1,10 @@
-import os
 from semanticscholar import SemanticScholar, Paper
 from typing import List, Dict, Any
 
 
 def get_client() -> SemanticScholar:
     """Create a Semantic Scholar client."""
-    api_key = (os.environ.get("SEMANTIC_SCHOLAR_API_KEY") or "").strip() or None
-    return SemanticScholar(
-        api_key=api_key,
-        timeout=15,
-        retry=bool(api_key),
-    )
+    return SemanticScholar(timeout=15, retry=False)
 
 
 def get_papers(
