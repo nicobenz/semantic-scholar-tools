@@ -2,6 +2,10 @@ from semanticscholar import SemanticScholar, Paper
 from typing import List, Dict, Any
 
 
+def get_client():
+    return SemanticScholar()
+
+
 def get_papers(
     client: SemanticScholar, query: str, count: int = 10
 ) -> List[Dict[str, Any]]:
