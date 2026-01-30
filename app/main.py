@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from app.service.search import (
+    get_client,
     get_papers,
     get_paper_details,
     get_citations_and_references,
@@ -15,6 +16,8 @@ app = FastAPI(
 )
 
 USER_AGENT = "semantic-scholar-llm-tool-server/0.0.1"
+
+client = get_client()
 
 
 @app.get("/", tags=["Root"])
@@ -34,9 +37,9 @@ async def root():
 
 
 @app.get("/api/search", tags=["Search"], response_model=dict)
-async def query_papers():
-    """Search semantic scholar"""
-    return get_papers()
+async def query_papers(query: str, limit: int = 10):
+    """Search semantic scholar. Pass your search query via the `query` query parameter."""
+    return get_papers(client=client, query=query, count=limit)
 
 
 @app.get("/api/details", tags=["Paper Details"], response_model=dict)
